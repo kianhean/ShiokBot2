@@ -11,6 +11,7 @@ requests = "*"
 zappa = "*"
 pylint = "*"
 flask = "*"
+telepot = "*"
 
 
 [dev-packages]
