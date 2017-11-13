@@ -7,9 +7,8 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 def receive():
     try:
-        print(request.json)
         handle(request.json)
-        return ""
+        return True
     except Exception as e:
         print(e)
         return ""
