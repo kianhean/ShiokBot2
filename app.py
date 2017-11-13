@@ -39,13 +39,11 @@ def handle(message):
 
     try:
         if message['text'] == '/start':
-            start(chat_id)
             response = "/start"
+            start(chat_id)
         else:
             response = "_NOACTION_"
     except TelegramError:
         print("If this is the local enviroment then all is good ;)")
 
-    output = {'content_type':content_type, 'chat_id':chat_id, 'response': response}
-
-    return output
+    return {'content_type':content_type, 'chat_id':chat_id, 'response': response}

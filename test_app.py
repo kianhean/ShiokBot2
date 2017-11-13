@@ -18,5 +18,15 @@ class TestParsingMethods(unittest.TestCase):
         self.assertEqual(output['response'], "_NOACTION_")
 
 
+    def test_start(self):
+        """ Mock Using Local Json """
+
+        with open("fixtures/start.json") as json_data:
+            data = json.load(json_data)
+
+        output = app.handle(data)
+        self.assertEqual(output['response'], "/start")
+
+
 if __name__ == '__main__':
     unittest.main()
