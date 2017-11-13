@@ -15,6 +15,7 @@ class TestParsingMethods(unittest.TestCase):
         output = app.handle(data)
         self.assertEqual(output['content_type'], 'text')
         self.assertEqual(output['chat_id'], 22959774)
+        self.assertEqual(output['response'], "_NOACTION_")
 
 
 if __name__ == '__main__':
