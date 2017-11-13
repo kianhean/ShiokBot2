@@ -1,4 +1,5 @@
 import os
+import json
 import requests
 import telepot
 from telepot.exception import TelegramError
@@ -15,6 +16,17 @@ def start(chat_id):
     bot.sendMessage(chat_id, text='Hi! I am a Telegram Bot!!')
 
 
+def read_message(message):
+    """ Returns Message as Dictionary """
+
+    if isinstance(message, dict):
+        message = message['message']
+    else:
+        message = json.loads(message)['message']
+
+    return message
+
+
 def handle(message):
     """ Handle JSON Message from Telegram 
         
@@ -22,16 +34,18 @@ def handle(message):
         http://telepot.readthedocs.io/en/latest/reference.html
     """
 
-    # Take only message portion of the JSON
-    message = message['message']
+    message = read_message(message)
     content_type, chat_type, chat_id = telepot.glance(message)
 
     try:
         if message['text'] == '/start':
             start(chat_id)
+            response = "/start"
+        else:
+            response = "_NOACTION_"
     except TelegramError:
         print("If this is the local enviroment then all is good ;)")
 
-    output = {'content_type':content_type, 'chat_id':chat_id}
+    output = {'content_type':content_type, 'chat_id':chat_id, 'response': response}
 
     return output
