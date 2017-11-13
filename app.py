@@ -1,5 +1,5 @@
-import requests
 import os
+import requests
 import telepot
 from telepot.exception import TelegramError
 
@@ -8,8 +8,10 @@ CHANNEL_ID = '-1001311613849'
 # The main URL for the Telegram API with our bot's token
 bot = telepot.Bot(os.environ.get('TELEGRAM_TOKEN'))
 
-###All the command and chat handlers
+""" All the command and chat handlers """
+
 def start(chat_id):
+    """ Start Command """
     bot.sendMessage(chat_id, text='Hi! I am a Telegram Bot!!')
 
 
