@@ -10,8 +10,8 @@ name = "pypi"
 requests = "*"
 zappa = "*"
 pylint = "*"
-flask = "*"
 telepot = "*"
+hug = "*"
 
 
 [dev-packages]

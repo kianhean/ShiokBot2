@@ -1,14 +1,8 @@
-from flask import Flask
-from flask import request
+import hug
 from app import handle
 
-app = Flask(__name__)
-
-@app.route("/", methods=["GET", "POST"])
-def receive():
-    try:
-        handle(request.json)
-        return ""
-    except Exception as e:
-        print(e)
-        return ""
+@hug.post('/')
+def receive(body):
+    """ Simple Hug Server """
+    output = handle(body)
+    return output
