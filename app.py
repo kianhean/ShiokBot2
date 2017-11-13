@@ -4,6 +4,15 @@ import requests
 import telepot
 from telepot.exception import TelegramError
 
+import configparser
+
+# Set Keys from Config
+config = configparser.ConfigParser()
+config.sections()
+config.read('./enviroment.ini')
+
+shiokapi_url = config['development']['SHIOK_API_HTTP']
+
 CHANNEL_ID = '-1001311613849'
 
 # The main URL for the Telegram API with our bot's token
