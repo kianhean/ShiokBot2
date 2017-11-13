@@ -143,3 +143,4 @@ venv.bak/
 
 zappa_settings.json
 .vscode
+enviroment.ini
