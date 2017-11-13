@@ -8,7 +8,8 @@ app = Flask(__name__)
 def receive():
     try:
         handle(request.json)
-        return True
+        type(request.json)
+        return request.json
     except Exception as e:
         print(e)
         return ""

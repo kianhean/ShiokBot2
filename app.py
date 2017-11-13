@@ -14,7 +14,11 @@ def start(chat_id):
 
 
 def handle(message):
-    """ Handle JSON Message from Telegram """
+    """ Handle JSON Message from Telegram 
+        
+        message - string 
+        http://telepot.readthedocs.io/en/latest/reference.html
+    """
 
     # Take only message portion of the JSON
     message = message['message']
@@ -23,8 +27,6 @@ def handle(message):
     try:
         if message['text'] == '/start':
             start(chat_id)
-        elif content_type == 'text':
-            bot.sendMessage(chat_id, message['text'])
     except TelegramError:
         print("If this is the local enviroment then all is good ;)")
 
