@@ -25,6 +25,12 @@ def start(chat_id):
     bot.sendMessage(chat_id, text='Hi! I am a Telegram Bot!!')
 
 
+def weather(chat_id):
+    """ Weather Command """
+    weather1 = requests.get(shiokapi_url + "weather").text
+    bot.sendMessage(chat_id, text=weather1)
+
+
 def read_message(message):
     """ Returns Message as Dictionary """
 
@@ -50,6 +56,9 @@ def handle(message):
         if message['text'] == '/start':
             response = "/start"
             start(chat_id)
+        elif message['text'] == '/weather':
+            response = "/weather"
+            weather(chat_id)
         else:
             response = "_NOACTION_"
     except TelegramError:
