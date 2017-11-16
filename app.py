@@ -39,7 +39,7 @@ def start(chat_id):
 def weather(chat_id):
     """ Weather Command """
 
-    bot.sendMessage(chat_id, text=personality(__name__))
+    bot.sendMessage(chat_id, text=personality("weather"))
     bot.sendChatAction(chat_id, "typing")
 
     weather1 = ask_shiokapi("weather")
@@ -63,9 +63,9 @@ def read_message(message):
 
 
 def handle(message):
-    """ Handle JSON Message from Telegram 
-        
-        message - string 
+    """ Handle JSON Message from Telegram
+
+        message - string
         http://telepot.readthedocs.io/en/latest/reference.html
     """
 
