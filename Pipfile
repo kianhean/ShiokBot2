@@ -11,6 +11,7 @@ requests = "*"
 zappa = "*"
 telepot = "*"
 hug = "*"
+emoji = "*"
 
 
 [dev-packages]
