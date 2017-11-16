@@ -27,9 +27,9 @@ def start(chat_id):
 
 def weather(chat_id):
     """ Weather Command """
-    weather1 = requests.get(shiokapi_url + "weather").text.replace('"','')
-    weather2 = requests.get(shiokapi_url + "weatherwarning").text.replace('"','')
-    weather3 = requests.get(shiokapi_url + "weathermap").text.replace('"','')
+    weather1 = json.loads(requests.get(shiokapi_url + "weather").text)
+    weather2 = json.loads(requests.get(shiokapi_url + "weatherwarning").text)
+    weather3 = json.loads(requests.get(shiokapi_url + "weathermap").text)
 
     bot.sendMessage(chat_id, text=weather2, parse_mode="HTML")
     bot.sendMessage(chat_id, text=weather1, parse_mode="HTML")
