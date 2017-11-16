@@ -19,7 +19,7 @@ class TestServer(unittest.TestCase):
         with open("fixtures/basic.json") as json_data:
             data = json.load(json_data)
             string_data = json_data.read()
-        
+
         #header = {'content-type': 'application/json'}
         #response = hug.test.call("POST",receive, url="http://127.0.0.1:8000/", body=json.dumps(data), headers=header)
         #print(response.status)
