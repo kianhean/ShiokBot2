@@ -1,10 +1,12 @@
 import os
+import random
 import json
+import configparser
 import requests
 import telepot
 from telepot.exception import TelegramError
 
-import configparser
+from emoji import emojize
 
 # Set Keys from Config
 config = configparser.ConfigParser()
@@ -21,6 +23,11 @@ def ask_shiokapi(endpoint):
     """ helper function to get results from shiokapi """
     return json.loads(requests.get(shiokapi_url + endpoint).text)
 
+def personality(topic):
+    """ helper function to get shiokbot's personality! """
+    personailty = list(json.load(open("personality.json"))[topic])
+    return emojize(random.choice(personailty), use_aliases=True)
+
 
 """ All the command and chat handlers """
 
@@ -31,6 +38,10 @@ def start(chat_id):
 
 def weather(chat_id):
     """ Weather Command """
+
+    bot.sendMessage(chat_id, text=personality(__name__))
+    bot.sendChatAction(chat_id, "typing")
+
     weather1 = ask_shiokapi("weather")
     weather2 = ask_shiokapi("weatherwarning")
     weather3 = ask_shiokapi("weathermap")
