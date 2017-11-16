@@ -9,13 +9,13 @@ name = "pypi"
 
 requests = "*"
 zappa = "*"
-pylint = "*"
 telepot = "*"
 hug = "*"
 
 
 [dev-packages]
 
+pylint = "*"
 
 
 [requires]
