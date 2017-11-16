@@ -10,13 +10,17 @@ import configparser
 config = configparser.ConfigParser()
 config.sections()
 config.read('./enviroment.ini')
-
 shiokapi_url = config['development']['SHIOK_API_HTTP']
-
-CHANNEL_ID = '-1001311613849'
+channel_id = config['development']['CHANNEL_ID']
 
 # The main URL for the Telegram API with our bot's token
 bot = telepot.Bot(os.environ.get('TELEGRAM_TOKEN'))
+
+
+def ask_shiokapi(endpoint):
+    """ helper function to get results from shiokapi """
+    return json.loads(requests.get(shiokapi_url + endpoint).text)
+
 
 """ All the command and chat handlers """
 
@@ -27,9 +31,9 @@ def start(chat_id):
 
 def weather(chat_id):
     """ Weather Command """
-    weather1 = json.loads(requests.get(shiokapi_url + "weather").text)
-    weather2 = json.loads(requests.get(shiokapi_url + "weatherwarning").text)
-    weather3 = json.loads(requests.get(shiokapi_url + "weathermap").text)
+    weather1 = ask_shiokapi("weather")
+    weather2 = ask_shiokapi("weatherwarning")
+    weather3 = ask_shiokapi("weathermap")
 
     bot.sendMessage(chat_id, text=weather2, parse_mode="HTML")
     bot.sendMessage(chat_id, text=weather1, parse_mode="HTML")
